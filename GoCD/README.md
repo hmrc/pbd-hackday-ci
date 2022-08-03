@@ -65,6 +65,10 @@ Had more luck with a simple echo, but keep in mind you have to be pretty careful
 
 Bit of a silly thing, but I can't see an easy way of stepping for the configuration of the pipeline to being able to see or trigger the pipeline.
 
+### Custom agent
+
+Like Jenkins, if you need a tool that isn't on the base agent, then you have to build your own. There is code for this in [custom-debian-agent](./custom-debian-agent/).
+
 ## Links
 
 * [Homepage](https://www.gocd.org/)
