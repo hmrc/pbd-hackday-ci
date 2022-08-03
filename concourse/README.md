@@ -4,7 +4,7 @@
 [Home page](https://concourse-ci.org)
 [Tutorial](https://concourse-ci.org/getting-started.html)
 
-### Install Process
+### Install Process and first pipeline
 [Quick Start](https://concourse-ci.org/quick-start.html)
 
 * Make sure Docker is up to date and you have the docker-compose plugin installed
@@ -41,6 +41,13 @@ fly -t tutorial trigger-job --job hello-world/hello-world-job --watch
 You can see the pipeline here:
 
 http://localhost:8080/teams/main/pipelines/hello-world/jobs/hello-world-job
+
+
+### Running 'make init' on bucket-dir
+
+Have a look at the bucket-dir.yml file.
+Needed to add the bucket-dir repo as a resource.
+Resources are added as directories to the container and can be passed between jobs 
 
 ###  Notes
 
