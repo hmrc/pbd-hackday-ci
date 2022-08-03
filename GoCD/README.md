@@ -20,6 +20,15 @@ If successful, this should then show up in the "AGENTS" tab:
 
 ![Connected agent](images/fig01.png)
 
+### Initial configuration
+
+There are some post-setup stuff you can optionally do like:
+
+* [Setting up a database, it supports H2, PostgreSQL and MySQL](https://docs.gocd.org/current/installation/configuring_database.html)
+* [Configure a seperate partition for "for GoCD server artifacts"](https://docs.gocd.org/current/installation/configuring_server_details.html#artifact-repository-configuration)
+* [Configure site URLs for reverse proxies](https://docs.gocd.org/current/installation/configuring_server_details.html#configure-site-urls)
+* [Server-to-agent TLS](https://docs.gocd.org/current/installation/ssl_tls/end_to_end_transport_security.html)
+
 ## Links
 
 * [Homepage](https://www.gocd.org/)
