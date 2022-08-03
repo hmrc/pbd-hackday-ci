@@ -1,8 +1,8 @@
 ## Concourse CI
 
 ### URLs:
-[Home page](https://concourse-ci.org)   
-[Tutorial](https://concourse-ci.org/getting-started.html)   
+[Home page](https://concourse-ci.org)
+[Tutorial](https://concourse-ci.org/getting-started.html)
 
 ### Install Process
 [Quick Start](https://concourse-ci.org/quick-start.html)
@@ -21,7 +21,7 @@ You should now be able to access Concourse on: http://localhost:8080
 
 ```bash
 curl 'http://localhost:8080/api/v1/cli?arch=amd64&platform=linux' -o fly && chmod +x ./fly && sudo mv ./fly /usr/local/bin/
-```    
+```
 
 * Log fly-cli into the concourse instance running locally:
 
@@ -33,7 +33,7 @@ logging in to team 'main'
 * Use hello-world.yml and run the following:
 
 ```bash
-fly -t tutorial set-pipeline -p hello-world -c hello-world.yml 
+fly -t tutorial set-pipeline -p hello-world -c hello-world.yml
 fly -t tutorial unpause-pipeline -p hello-world
 fly -t tutorial trigger-job --job hello-world/hello-world-job --watch
 ```
@@ -50,4 +50,5 @@ http://localhost:8080/teams/main/pipelines/hello-world/jobs/hello-world-job
     * Each step runs in it’s own container on a worker node.
     * Nodes can be linux, darwin or windows.
     * Containers only linux.
+* You can control access to pipelines via putting them in seperate [teams](https://concourse-ci.org/auth.html). This could be used to filter pipelines so that users only see what they need to see.
 
