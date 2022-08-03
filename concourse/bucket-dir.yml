@@ -1,0 +1,32 @@
+resources:
+- name: bucket-dir
+  type: git
+  icon: github
+  source:
+    uri: https://github.com/hmrc/bucket-dir
+
+jobs:
+- name: run-make-file
+  plan:
+  - get: bucket-dir
+  - task: make-build
+    config:
+      platform: linux
+      image_resource:
+        type: registry-image
+        source:
+          repository: alpine
+      inputs: # pass bucket-dir into this task step
+      - name: bucket-dir
+      run:
+        path: sh
+        args: 
+        - -cx
+        - |
+          apk update
+          apk add make 
+          apk add py-pip
+          ls -la
+          cd bucket-dir
+          make init
+          make build
