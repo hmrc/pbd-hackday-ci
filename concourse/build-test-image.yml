@@ -1,0 +1,26 @@
+resources:
+- name: pbd-hackday-ci
+  type: git
+  icon: github
+  source:
+    uri: https://github.com/hmrc/pbd-hackday-ci
+
+jobs:
+- name: build-docker
+  plan:
+  - get: pbd-hackday-ci
+  - task: make-build
+    config:
+      platform: linux
+      image_resource:
+        type: registry-image
+        source:
+          repository: concourse/oci-build-task
+      inputs:
+        - name: pbd-hackday-ci
+      params:
+        DOCKERFILE: pbd-hackday-ci/concourse/test-image/Dockerfile
+      run:
+        path: build
+      outputs:
+        - name: test-image
