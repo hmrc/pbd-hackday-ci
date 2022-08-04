@@ -1,3 +1,3 @@
 FROM alpine
 
-RUN touch hello-there
+RUN echo "This is a file we've added" > /test-file.txt
