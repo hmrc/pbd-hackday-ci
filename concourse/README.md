@@ -47,9 +47,29 @@ http://localhost:8080/teams/main/pipelines/hello-world/jobs/hello-world-job
 
 Have a look at the bucket-dir.yml file.
 Needed to add the bucket-dir repo as a resource.
-Resources are added as directories to the container and can be passed between jobs 
+Resources are added as directories to the container and can be passed between jobs
 
-###  Notes
+### Teams
+
+Concourse has a concept of "teams". Users can be made members of one or more teams, and they can see jobs that have been created against those teams.
+
+To create a team with a certain user membership:
+
+```fly -t tutorial set-team -n nerds --local-user nerds```
+
+Then, to create jobs against a particular team, you first have to include the `--team-name` when logging in with `fly`:
+
+```fly -t tutorial login -c http://localhost:8080 -u test -p test --team-name nerds```
+
+And you then create jobs as normal, which will assign them to the active team:
+
+```fly -t tutorial set-pipeline -p build-test-image -c build-test-image.yml```
+
+This can be tested by logging in as the `nerds` user, which only allows you to see jobs for the `nerds` team, note that the jobs created against the `main` team are not visible to this user:
+
+![the nerds user can only see jobs in the nerds team](pictures/fig1.png)
+
+### Notes
 
 * Jenkins pipeline = concourse job (Apparently, not too sure though!)
 * Pipeline is made up of an unordered list of jobs
