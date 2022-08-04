@@ -69,6 +69,14 @@ This can be tested by logging in as the `nerds` user, which only allows you to s
 
 ![the nerds user can only see jobs in the nerds team](pictures/fig1.png)
 
+### Building and testing docker images
+
+Because Concourse runs docker inside a `runc` process, building and running docker images during jobs is fairly trivial.
+
+The [build-test-image.yml](build-test-image.yml) definition shows an example of how a docker image can be built from a Dockerfile, and then that image can be tested by being started in a subsequent task.
+
+![the build-test-image job both builds a docker image and runs a container from it](pictures/fig2.png)
+
 ### Notes
 
 * Jenkins pipeline = concourse job (Apparently, not too sure though!)
