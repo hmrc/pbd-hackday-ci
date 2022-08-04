@@ -12,7 +12,7 @@
 * Get the docker-compose file and run it:
 ```bash
 curl -O https://concourse-ci.org/docker-compose.yml
-docker compose up -d
+docker-compose up -d
 ```
 
 You should now be able to access Concourse on: http://localhost:8080
