@@ -59,3 +59,11 @@ Resources are added as directories to the container and can be passed between jo
     * Containers only linux.
 * You can control access to pipelines via putting them in seperate [teams](https://concourse-ci.org/auth.html). This could be used to filter pipelines so that users only see what they need to see.
 
+
+### To-do
+
+* Look into what a migration would look like
+* How to import all the jobs
+* Any other things that could kill it dead
+* Building docker images.
+* Understand the implementation a little better
