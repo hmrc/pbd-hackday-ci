@@ -6,10 +6,11 @@ resources:
     uri: https://github.com/hmrc/pbd-hackday-ci
 
 jobs:
-- name: build-docker
+- name: build-and-test
   plan:
   - get: pbd-hackday-ci
-  - task: make-build
+  - task: build-the-docker-image
+    privileged: true
     config:
       platform: linux
       image_resource:
@@ -19,8 +20,16 @@ jobs:
       inputs:
         - name: pbd-hackday-ci
       params:
-        DOCKERFILE: pbd-hackday-ci/concourse/test-image/Dockerfile
+        CONTEXT: pbd-hackday-ci/concourse/test-image
+        UNPACK_ROOTFS: true
       run:
         path: build
       outputs:
-        - name: test-image
+        - name: image
+  - task: test-the-docker-image
+    image: image
+    config:
+      platform: linux
+      run:
+        path: cat
+        args: ["/test-file.txt"]
